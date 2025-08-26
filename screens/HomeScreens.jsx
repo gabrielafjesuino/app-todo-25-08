@@ -1,10 +1,45 @@
-import {Text, View} from "react-native";
+import {View, StyleSheet, ScrollView} from "react-native";
 import Header from "../components/Header"
+import FormCadastro from "../components/FormCadastro";
+import BtnCont from "../components/BtnCont";
+import sizes from "../design/sizes";
+import Colors from "../design/colors";
+import colors from "../design/colors";
+import EmptyList from "../components/EmptyList";
+import Search from "../components/Search";
+import Card from "../components/Card";
 
 export default function HomeScreens() {
     return (
-        <View>
+        <ScrollView>
             <Header />
-        </View>
+
+            <FormCadastro />
+
+            <View style={styles.containerBotoes}>
+                <BtnCont titulo={"Tarefas Criadas"} numero={"12"} />
+                <BtnCont titulo={"Concluídas"} numero={"5"} isGreen={true} />
+            </View>
+
+            <Search />
+
+            <EmptyList />
+
+            <Card />
+
+            <Card ativo={true} />
+        </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    containerBotoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal: sizes.margin_horizontal,
+        marginTop: sizes.padding_large,
+        paddingBottom: sizes.padding_large,
+        borderBottomWidth: 2,
+        borderBottomColor: colors.gray_330,
+    }
+})

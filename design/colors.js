@@ -14,4 +14,7 @@ export default {
     gray_600: "#262428",
 
     danger: "#C2464D",
+
+    white: '#FFFFFF',
+    black: '#000000',
 }
