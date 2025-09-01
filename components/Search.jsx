@@ -2,18 +2,24 @@ import {StyleSheet, TextInput, View} from "react-native";
 import sizes from "../design/sizes";
 import colors from "../design/colors";
 
-export default function Search() {
+export default function Search({ textoBusca, aoDigitar }) {
     return (
         <View style={styles.container}>
-            <TextInput placeholder={"Busque por tarefas"} style={styles.input} />
+            <TextInput
+                style={styles.input}
+                placeholder={"Busque por tarefas"}
+                placeholderTextColor={colors.gray_300}
+                value={textoBusca}
+                onChangeText={aoDigitar}
+            />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: sizes.margin_horizontal,
-        marginVertical: sizes.size_medium,
+        marginVertical: sizes.size_medium
     },
     input: {
         backgroundColor: colors.white,

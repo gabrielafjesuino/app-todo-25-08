@@ -2,7 +2,8 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import sizes from "../design/sizes";
 import colors from "../design/colors";
 
-export default function Card({ ativo = false }) {
+export default function Card ({ativo = false, texto = "", fnConcluir = null, fnExcluir = null}) {
+
     let styles = stylesAtivo
 
     if (ativo) {
@@ -11,12 +12,15 @@ export default function Card({ ativo = false }) {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.circulo}>
-                {ativo && <Image style={styles.icon} source={require("../assets/check.png")} />}
+            <TouchableOpacity onPress={fnConcluir} style={styles.circulo}>
+                {ativo && <Image style={styles.icon} source={require('../assets/check.png')} />}
             </TouchableOpacity>
-            <Text style={styles.text}>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</Text>
-            <TouchableOpacity>
-                <Image style={styles.lixo} source={require('../assets/lixo.png')} />
+
+            <Text style={styles.text}> {texto} </Text>
+
+            <TouchableOpacity onPress={fnExcluir}>
+                <Image style={styles.lixo}
+                       source={require('../assets/lixo.png')} />
             </TouchableOpacity>
         </View>
     )
@@ -24,8 +28,8 @@ export default function Card({ ativo = false }) {
 
 const stylesAtivo = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
         marginHorizontal: sizes.margin_horizontal,
         padding: sizes.padding_medium,
         gap: 10,
@@ -33,7 +37,7 @@ const stylesAtivo = StyleSheet.create({
         borderRadius: sizes.border_radius,
         borderColor: colors.gray_330,
         borderWidth: 2,
-        marginVertical: sizes.padding_medium,
+        marginVertical: sizes.padding_medium
     },
     circulo: {
         width: 20,
@@ -45,19 +49,20 @@ const stylesAtivo = StyleSheet.create({
     text: {
         color: colors.gray_600,
         fontSize: sizes.size_medium,
-        width: "80%",
+        width: '80%'
     },
     lixo: {
         width: 30,
         height: 50,
-        resizeMode: "contain",
+        resizeMode: 'contain',
     }
 })
 
+
 const stylesConcluido = StyleSheet.create({
     container: {
-        flexDirection: "row",
-        alignItems: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
         marginHorizontal: sizes.margin_horizontal,
         padding: sizes.padding_medium,
         gap: 10,
@@ -65,7 +70,7 @@ const stylesConcluido = StyleSheet.create({
         borderRadius: sizes.border_radius,
         borderColor: colors.gray_330,
         borderWidth: 2,
-        marginVertical: sizes.padding_medium,
+        marginVertical: sizes.padding_medium
     },
     circulo: {
         width: 20,
@@ -74,19 +79,19 @@ const stylesConcluido = StyleSheet.create({
         borderWidth: 2,
         borderRadius: sizes.border_circle,
         backgroundColor: colors.green_base,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     text: {
         color: colors.gray_600,
         fontSize: sizes.size_medium,
-        width: "80%",
-        textDecorationLine: "line-through",
+        width: '80%',
+        textDecorationLine: 'line-through',
     },
     lixo: {
         width: 30,
         height: 50,
-        resizeMode: "contain",
+        resizeMode: 'contain',
     },
     icon: {
         width: 18,

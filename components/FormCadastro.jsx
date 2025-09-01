@@ -1,26 +1,32 @@
-import {Image, StyleSheet, TextInput, TouchableOpacity, View} from "react-native";
+import {Image, TextInput, TouchableOpacity, View, StyleSheet} from "react-native";
 import colors from "../design/colors";
 import sizes from "../design/sizes";
 
-export default function FormCadastro() {
+export default function FormCadastro({ fnCadastrar, texto, setTexto}) {
     return (
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder={"Adicione uma nova tarefa"}/>
 
-            <TouchableOpacity style={styles.btn}>
-                <Image style={styles.img} source={require('../assets/add.png')} />
+            <TextInput style={styles.input}
+                       onChangeText={setTexto}
+                       value={texto}
+                       placeholder={"Adicione uma nova tarefa"} />
+
+            <TouchableOpacity onPress={fnCadastrar} style={styles.btn}>
+                <Image style={styles.img}
+                       source={require('../assets/add.png')} />
             </TouchableOpacity>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: "row",
         gap: 10,
         height: 80,
         marginHorizontal: sizes.margin_horizontal,
-        marginTop: -40,
+        marginTop: -40
     },
     input: {
         backgroundColor: colors.white,
@@ -30,8 +36,8 @@ const styles = StyleSheet.create({
         color: colors.gray_500,
         fontSize: sizes.size_title,
         padding: sizes.padding_medium,
-        width: '80%',
-        elevation: 2,
+        width: "80%",
+        elevation: 2
     },
     btn: {
         backgroundColor: colors.purple_dark,
@@ -43,6 +49,6 @@ const styles = StyleSheet.create({
     img: {
         width: 25,
         height: 25,
-        resizeMode: 'contain',
+        resizeMode: "contain",
     }
 })

@@ -2,14 +2,20 @@ import {Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import sizes from "../design/sizes";
 import colors from "../design/colors";
 
-export default function BtnCont({ titulo, numero, acao = () => true, isGreen = false }) {
+export default function BtnCont({
+    titulo,
+    numero,
+    acao = () => true,
+    isGreen = false
+                                }) {
+
     let circulo = {
         width: 30,
         height: 30,
         backgroundColor: colors.purple_light,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: sizes.border_circle,
+        borderRadius: sizes.border_circle
     }
 
     let num = {
@@ -44,5 +50,5 @@ const styles = StyleSheet.create({
         fontSize: sizes.size_medium,
         color: colors.gray_500,
         fontWeight: 'bold',
-    },
+    }
 })
